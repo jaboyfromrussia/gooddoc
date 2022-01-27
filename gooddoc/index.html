@@ -1,0 +1,289 @@
+<!-- PHP код для вывода списка врачей -->
+
+<?php
+  // для списка вып. полей нужно
+  include ('script/php/connect.php');
+  // ставим кодировку.
+  mysqli_set_charset($mysql, "utf8"); 
+  // таблица: spec, два поля: id, spec-doc
+  $sql = mysqli_query($mysql, "SELECT * FROM `spec`");
+  $options_out='';
+  while ($a= mysqli_fetch_array($sql,MYSQLI_ASSOC)){
+    // Формируем вывод
+    $options_out.= '<option>'.$a['spec-doc'].'</option>'."\n";
+      }
+?>
+
+<!-- Webflow website for sessions -->
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoodDoc</title>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> -->
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/grid.css">
+  <link rel="stylesheet" type="text/css" href="/css/queries.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css">
+</head>
+
+<body>
+  <header id="hdr">
+    <nav>
+      <div class="row">
+        <p>
+          <a href="#hdr">
+            <img src="/img/logo-white.svg" alt="GoodDoc" class="logo">
+            <img src="/img/logo.svg" alt="GoodDoc" class="logo-black">
+          </a>
+        </p>
+        <ul class="main-nav">
+          <li>
+            <a href="about.html">О нас</a>
+          </li>
+          <li>
+            <a href="services.html">Услуги</a>
+          </li>
+          <li>
+            <a href="#formsec">Записаться</a>
+          </li>
+          <li>
+            <a href="cabinet.php">Кабинет</a>
+          </li>
+          <li>
+            <a class="phone-link" href="tel:89503047737">+7 (950) 304-77-37</a>
+          </li>
+        </ul>
+        <a class="mobile-nav-icon">
+          <i class="ion-navicon-round"></i>
+        </a>
+      </div>
+    </nav>
+    <div class="col">
+      <div class="header-content">
+        <h1>GoodDoc.<br>Ваше здоровье в наших руках</h1><br>
+        <a id="scrl" class="btn btn-primary" href="#formsec">Записаться</a>
+        <!-- <a class="btn btn-secondary" href="cabinet.php">Для врача</a> -->
+      </div>
+    </div>
+
+  </header>
+
+  <section class="section-features js--section-features">
+    <div class="row">
+      <h2>Lorem Ipsum</h2>
+      <p class="long-text">
+        Консультативный прием ведут опытные, квалифицированные врачи, кандидаты и доктора наук, имеющие большой опыт
+        работы.
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="col span-1-of-4 box">
+        <ion-icon class="icon-big" name="calendar-outline"></ion-icon>
+        <h3>
+          Работаем 365 дней в году
+        </h3>
+        <p>
+          GoodDoc работает в экстренном и плановом режиме 365 дней в году
+        </p>
+      </div>
+      <div class="col span-1-of-4 box">
+        <ion-icon class="icon-big" name="globe-outline"></ion-icon>
+        <h3>
+          Специалисты со всего мира
+        </h3>
+        <p>
+          Западноевропейские, североамериканские, израильские, японские и российские врачи с опытом работы в ведущих
+          клиниках мира.
+        </p>
+      </div>
+
+      <div class="col span-1-of-4 box">
+        <ion-icon class="icon-big" name="desktop-outline"></ion-icon>
+        <h3>
+          Современные технологии
+        </h3>
+        <p>
+          Современные методы обследования и диагностики, передовое техническое оснащение, высокотехнологичное
+          оборудование.
+        </p>
+      </div>
+
+      <div class="col span-1-of-4 box">
+        <ion-icon class="icon-big" name="medical-outline"></ion-icon>
+        <h3>
+          Новейшие протоколы
+        </h3>
+        <p>
+          Лечение в EMC проводится по современным американским и европейским протоколам.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section-form">
+    <div class="row" id="formsec">
+      <h2>Запись на приём</h2>
+    </div>
+    <div class="row">
+
+      <!-- ФОРМА -->
+      <form action="script/php/chck.php" method="post" class="contact-form">
+
+        <div class="row">
+          <div class="col span-1-of-3">
+            <label>Имя</label>
+          </div>
+          <div class="col span-2-of-3">
+            <input type="text" class="form-control" name="name" id="name" placeholder="Ваше имя" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col span-1-of-3">
+            <label>Телефон</label>
+          </div>
+          <div class="col span-2-of-3">
+            <input type="text" class="form-control" name="phone" id="phoneMobile" placeholder="+79999999999"
+              required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col span-1-of-3">
+            <label>Специалист</label>
+          </div>
+          <div class="col span-2-of-3">
+            <select type="text" name="spec" id="spec" required>
+              <?php
+                // вывод в виде выпадающего списка
+                echo $options_out;
+              ?>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col span-1-of-3">
+            <label>Удобное время приёма</label>
+          </div>
+          <div class="col span-2-of-3">
+            <link rel="stylesheet" type="text/css" href="script/js/jquery.datetimepicker.min.css" />
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script src="script/js/jquery.datetimepicker.full.min.js"></script>
+            <input type="datetime" class="form-control" name="date" id="datetimepicker"
+              placeholder="Выберите дату и время" required><br>
+
+            <script>
+              jQuery.datetimepicker.setLocale('ru');
+
+              $('#datetimepicker').datetimepicker({
+                inline: false,
+                closeOnTimeSelect: true,
+                closeOnDateSelect: false,
+                closeOnWithoutClock: false,
+                onShow: function (ct) {
+                  this.setOptions({
+                    defaultDate: '+1970/01/02',
+                    startDate: '+1970/01/02',
+                    minDate: '+1970/01/02',
+                    //maxDate:'+1970/01/02',
+                    minTime: '08:00',
+                    maxTime: '21:00',
+                    // allowTimes: [
+                    //   '09.00',
+                    //   '10:00',
+                    //   '11:00',
+                    //   '12:00',
+                    //   '13:00',
+                    //   '14:00',
+                    //   '15:00',
+                    //   '16:00',
+                    //   '17:00'],
+                  })
+                },
+              })
+            </script>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col span-1-of-3">
+            <label>&nbsp;</label>
+          </div>
+          <div class="col span-2-of-3">
+            <button class="btn btn-primary" type="submit">Записаться на приём</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="row">
+      <div class="col span-1-of-2">
+        <ul class="footer-nav">
+          <p>Меню</p>
+          <li><a href="#">Главная</a></li>
+          <li><a href="about.html">О нас</a></li>
+          <li><a href="services.html">Услуги</a></li>
+        </ul>
+      </div>
+      <div class="col span-1-of-2">
+        <ul class="social">
+          <p>Связаться с нами</p>
+          <li><a href="#">
+              <ion-icon name="mail-outline"></ion-icon>
+            </a></li>
+          <li><a href="#">
+              <ion-icon name="call-outline"></ion-icon>
+            </a></li>
+          <li><a href="#">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <p>г. Абакан, ул. Чертыгашева, д.112</p>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- </div> -->
+
+
+  <!-- </div>
+  </div> -->
+
+
+  <!-- ICONS -->
+  <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+
+  <!-- jQuery and JS bundle w/ Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="/script/js/jquery.waypoints.js"></script>
+  <script src="/script/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+
+
+
+/* --------------------------------------------------------- */
+/* From 1024px to 1200px */
+/* --------------------------------------------------------- */
+
+@media only screen and (max-width: 1200px){
+
+    .header-content{
+    width: 100%;
+    padding: 0 2%;
+}
+    .row{
+        padding: 0 2%;
+    }
+}
+
+/* --------------------------------------------------------- */
+/* From 768 to 1023px */
+/* --------------------------------------------------------- */
+
+@media only screen and (max-width: 1023px){
+    body{
+        font-size: 18px;
+    }
+    section{
+        padding: 60px 0;
+    }
+    .long-text{
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .contact-form{
+        width: 80%;
+    }
+
+    .main-nav li{
+        display: inline-block;
+        margin-right: 10px;
+    }
+}
+
+
+
+/* --------------------------------------------------------- */
+/* From 481px to 767px */
+/* --------------------------------------------------------- */
+
+@media only screen and (max-width: 767px){
+    body{
+        font-size: 16px;
+    }
+    section{
+        padding: 30px 0;
+    }
+
+    .row,
+    .header-content{
+        padding: 0 4%;
+    }
+
+    .col{
+        width: 100%;
+    }
+
+    /* .main-nav{
+        display: none;
+    } */
+
+    .mobie-nav-icon{
+        display: inline-block;
+    }
+
+    .icon-big{
+        margin-top: 0;
+        margin: 10px;
+    }
+
+    .long-text{
+        width: 100%;
+        margin-left: 1%;
+    }
+
+    h1{
+        font-size: 180%;
+    }
+
+    h2{
+        font-size: 150%;
+    }
+
+    .contact-form{
+        width: 90%;
+    }
+
+    .form-control,
+    select{
+        margin: 10px 0px;
+    }
+
+    .social{
+        float: left;
+    }
+}
+
+/* --------------------------------------------------------- */
+/* From 0 to 480px */
+/* --------------------------------------------------------- */
+
+@media only screen and (max-width: 480px){
+    section{
+        padding: 20px 0;
+    }
+
+    .contact-form{
+        width: 100%;
+    }
+
+    .btn{
+        display: block;
+        float: left;
+        margin: 10px 10px;
+    }
+}
